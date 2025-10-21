@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Rasyid Anwar Arief - Siswa RPL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #a855f7;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --card: #1e293b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            scroll-behavior: smooth;
+        }
+        
+        .tech-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: var(--card);
+            border: 1px solid #334155;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--darker) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .floating { 
+            animation-name: floating;
+            animation-duration: 3s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0,  0px); }
+            50%  { transform: translate(0, 15px); }
+            100%   { transform: translate(0, -0px); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            background: var(--card);
+            border: 1px solid #334155;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: inline-block;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-info {
+            flex-grow: 1;
+        }
+        
+        .contact-label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+        
+        .contact-value {
+            font-size: 1rem;
+            color: #e2e8f0;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 8px;
+            color: white;
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+            max-width: 350px;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification.success {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+        
+        .notification.error {
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .loading-spinner {
+            border: 3px solid #334155;
+            border-top: 3px solid var(--primary);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="flex items-center">
+            <i id="notification-icon" class="fas fa-check-circle mr-2"></i>
+            <span id="notification-message">Pesan berhasil dikirim!</span>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold gradient-text">Rasyid<span class="text-purple-400">Dev</span></a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-300 hover:text-white transition">Beranda</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition">Tentang</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition">Kemampuan</a>
+                <a href="#projects" class="text-gray-300 hover:text-white transition">Proyek</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition">Kontak</a>
+            </nav>
+            
+            <button id="mobile-menu-button" class="md:hidden text-gray-300">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass py-4 px-4">
+            <a href="#home" class="block py-2 text-gray-300 hover:text-white transition">Beranda</a>
+            <a href="#about" class="block py-2 text-gray-300 hover:text-white transition">Tentang</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-white transition">Kemampuan</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-white transition">Proyek</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-white transition">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white py-20 md:py-32 relative">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <p class="text-lg mb-2 text-indigo-300">Halo, Saya</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Rasyid Anwar Arief</h1>
+                <div class="flex items-center mb-4">
+                    <span class="pulse-dot"></span>
+                    <p class="text-xl text-indigo-200">Siswa Rekayasa Perangkat Lunak</p>
+                </div>
+                <p class="text-lg mb-6 text-gray-300">Pengembang web dan aplikasi yang bersemangat. Siap untuk magang PKL dan berkontribusi dalam proyek nyata!</p>
+                <div class="flex space-x-4">
+                    <a href="#projects" class="btn-primary text-white px-6 py-3 rounded-lg font-medium">Lihat Proyek</a>
+                    <a href="#contact" class="btn-outline px-6 py-3 rounded-lg font-medium">Hubungi Saya</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 bg-indigo-500/10 rounded-full flex items-center justify-center floating border border-indigo-500/20">
+                    <div class="absolute w-56 h-56 md:w-72 md:h-72 bg-purple-500/10 rounded-full border border-purple-500/20"></div>
+                    <div class="absolute w-48 h-48 md:w-64 md:h-64 bg-amber-500/10 rounded-full flex items-center justify-center border border-amber-500/20">
+                        <i class="fas fa-laptop-code text-6xl md:text-8xl text-indigo-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 section-title">Tentang Saya</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">
+                Saya adalah siswa jurusan Rekayasa Perangkat Lunak (RPL) di Pesantren dengan passion dalam pengembangan web dan aplikasi. 
+                Saat ini saya sedang mencari kesempatan PKL untuk menerapkan pengetahuan yang telah saya pelajari dan mengembangkan 
+                keterampilan profesional di lingkungan kerja yang nyata.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-400 flex items-center">
+                        <i class="fas fa-graduation-cap mr-3"></i>Pendidikan
+                    </h3>
+                    <div class="mb-4">
+                        <p class="text-gray-300 mb-1"><strong>Pesantren Jurusan Rekayasa Perangkat Lunak</strong></p>
+                        <p class="text-gray-400 text-sm">2021 - Sekarang</p>
+                        <p class="text-gray-300 mt-2">Fokus pada pengembangan web, basis data, pemrograman aplikasi, IOT, dan software modeling.</p>
+                    </div>
+                </div>
+                
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-indigo-400 flex items-center">
+                        <i class="fas fa-bullseye mr-3"></i>Tujuan PKL
+                    </h3>
+                    <p class="text-gray-300 mb-4">Mencari kesempatan PKL untuk mengaplikasikan keterampilan pengembangan web dan software, serta belajar dari profesional di industri.</p>
+                    <div class="flex items-center mt-4">
+                        <span class="pulse-dot"></span>
+                        <p class="text-indigo-300">Siap bergabung mulai Januari 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-darker">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 section-title">Kemampuan Teknis</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">
+                Berikut adalah teknologi dan tools yang telah saya pelajari dan kuasai selama pendidikan di jurusan RPL.
+            </p>
+            
+            <!-- Frontend Skills -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold mb-6 text-indigo-400 flex items-center">
+                    <i class="fas fa-palette mr-3"></i> Frontend Development
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i>
+                        <h4 class="font-medium">HTML</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i>
+                        <h4 class="font-medium">CSS</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-js-square text-4xl text-yellow-400 mb-3"></i>
+                        <h4 class="font-medium">JavaScript</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-react text-4xl text-cyan-400 mb-3"></i>
+                        <h4 class="font-medium">React</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fas fa-code text-4xl text-purple-400 mb-3"></i>
+                        <h4 class="font-medium">HEXT.JS</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Backend Skills -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold mb-6 text-indigo-400 flex items-center">
+                    <i class="fas fa-server mr-3"></i> Backend Development
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-php text-4xl text-purple-500 mb-3"></i>
+                        <h4 class="font-medium">PHP</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fas fa-fire text-4xl text-orange-500 mb-3"></i>
+                        <h4 class="font-medium">CodeIgniter</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-python text-4xl text-green-400 mb-3"></i>
+                        <h4 class="font-medium">Python</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Database Skills -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-semibold mb-6 text-indigo-400 flex items-center">
+                    <i class="fas fa-database mr-3"></i> Database
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fas fa-database text-4xl text-blue-500 mb-3"></i>
+                        <h4 class="font-medium">MySQL</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fas fa-database text-4xl text-teal-400 mb-3"></i>
+                        <h4 class="font-medium">SQLite</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Design & Tools -->
+            <div>
+                <h3 class="text-2xl font-semibold mb-6 text-indigo-400 flex items-center">
+                    <i class="fas fa-tools mr-3"></i> Design & Tools
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-git-alt text-4xl text-orange-600 mb-3"></i>
+                        <h4 class="font-medium">Git</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-github text-4xl text-gray-300 mb-3"></i>
+                        <h4 class="font-medium">GitHub</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fas fa-code text-4xl text-blue-400 mb-3"></i>
+                        <h4 class="font-medium">VS Code</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fas fa-paint-brush text-4xl text-green-500 mb-3"></i>
+                        <h4 class="font-medium">GIMP</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fas fa-vector-square text-4xl text-purple-400 mb-3"></i>
+                        <h4 class="font-medium">Inkscape</h4>
+                    </div>
+                    <div class="tech-card p-6 rounded-xl text-center">
+                        <i class="fab fa-figma text-4xl text-red-500 mb-3"></i>
+                        <h4 class="font-medium">Figma</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 section-title">Proyek Saya</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">
+                Beberapa proyek yang telah saya kerjakan selama pembelajaran di jurusan RPL.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Website Portofolio -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-blue-500/20 to-purple-500/20 flex items-center justify-center border-b border-gray-700">
+                        <i class="fas fa-laptop-code text-6xl text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Website Portofolio</h3>
+                        <p class="mb-4">Website portofolio pribadi yang responsif menggunakan HTML, CSS, dan JavaScript.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">HTML</span>
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">CSS</span>
+                            <span class="bg-yellow-500/20 text-yellow-300 text-xs px-2 py-1 rounded">JavaScript</span>
+                        </div>
+                        <a href="#" class="text-indigo-400 font-medium hover:text-indigo-300 transition flex items-center">
+                            Lihat Detail <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Aplikasi E-Commerce -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-green-500/20 to-blue-500/20 flex items-center justify-center border-b border-gray-700">
+                        <i class="fas fa-shopping-cart text-6xl text-green-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Aplikasi E-Commerce</h3>
+                        <p class="mb-4">Aplikasi e-commerce sederhana dengan sistem keranjang belanja dan checkout.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-cyan-500/20 text-cyan-300 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-purple-500/20 text-purple-300 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-600/20 text-blue-300 text-xs px-2 py-1 rounded">MySQL</span>
+                        </div>
+                        <a href="#" class="text-indigo-400 font-medium hover:text-indigo-300 transition flex items-center">
+                            Lihat Detail <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Sistem Manajemen Tugas -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-purple-500/20 to-pink-500/20 flex items-center justify-center border-b border-gray-700">
+                        <i class="fas fa-tasks text-6xl text-purple-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Sistem Manajemen Tugas</h3>
+                        <p class="mb-4">Aplikasi web untuk mengelola tugas dengan fitur prioritas dan deadline.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">HTML</span>
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">CSS</span>
+                            <span class="bg-green-500/20 text-green-300 text-xs px-2 py-1 rounded">Python</span>
+                            <span class="bg-teal-500/20 text-teal-300 text-xs px-2 py-1 rounded">SQLite</span>
+                        </div>
+                        <a href="#" class="text-indigo-400 font-medium hover:text-indigo-300 transition flex items-center">
+                            Lihat Detail <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Aplikasi Catatan Pribadi -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-amber-500/20 to-red-500/20 flex items-center justify-center border-b border-gray-700">
+                        <i class="fas fa-sticky-note text-6xl text-amber-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Aplikasi Catatan Pribadi</h3>
+                        <p class="mb-4">Aplikasi untuk membuat dan mengelola catatan pribadi dengan sistem kategori.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-cyan-500/20 text-cyan-300 text-xs px-2 py-1 rounded">React</span>
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">CSS</span>
+                            <span class="bg-green-500/20 text-green-300 text-xs px-2 py-1 rounded">Node.js</span>
+                        </div>
+                        <a href="#" class="text-indigo-400 font-medium hover:text-indigo-300 transition flex items-center">
+                            Lihat Detail <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Website Sekolah -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 flex items-center justify-center border-b border-gray-700">
+                        <i class="fas fa-school text-6xl text-emerald-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Website Sekolah</h3>
+                        <p class="mb-4">Website informasi sekolah dengan sistem admin untuk mengelola konten.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">HTML</span>
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">CSS</span>
+                            <span class="bg-purple-500/20 text-purple-300 text-xs px-2 py-1 rounded">PHP</span>
+                            <span class="bg-blue-600/20 text-blue-300 text-xs px-2 py-1 rounded">MySQL</span>
+                        </div>
+                        <a href="#" class="text-indigo-400 font-medium hover:text-indigo-300 transition flex items-center">
+                            Lihat Detail <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Aplikasi Cuaca -->
+                <div class="project-card rounded-xl overflow-hidden">
+                    <div class="h-48 bg-gradient-to-r from-sky-500/20 to-indigo-500/20 flex items-center justify-center border-b border-gray-700">
+                        <i class="fas fa-cloud-sun text-6xl text-sky-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Aplikasi Cuaca</h3>
+                        <p class="mb-4">Aplikasi untuk menampilkan informasi cuaca berdasarkan lokasi pengguna.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-500/20 text-yellow-300 text-xs px-2 py-1 rounded">JavaScript</span>
+                            <span class="bg-blue-500/20 text-blue-300 text-xs px-2 py-1 rounded">CSS</span>
+                            <span class="bg-green-500/20 text-green-300 text-xs px-2 py-1 rounded">API</span>
+                        </div>
+                        <a href="#" class="text-indigo-400 font-medium hover:text-indigo-300 transition flex items-center">
+                            Lihat Detail <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-darker">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 section-title">Hubungi Saya</h2>
+            <p class="text-center max-w-3xl mx-auto mb-12">
+                Tertarik untuk menawarkan kesempatan PKL atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya.
+            </p>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Form Kontak -->
+                    <div class="glass p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-6 text-indigo-400">Kirim Pesan PKL</h3>
+                        
+                        <!-- Loading Indicator -->
+                        <div id="loading" class="loading">
+                            <div class="loading-spinner"></div>
+                            <p>Mengirim data ke Formspree...</p>
+                        </div>
+                        
+                        <form id="contact-form">
+                            <div class="mb-6">
+                                <label for="name" class="block mb-2">Nama Lengkap <span class="text-red-400">*</span></label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="email" class="block mb-2">Email <span class="text-red-400">*</span></label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="company" class="block mb-2">Perusahaan/Instansi <span class="text-red-400">*</span></label>
+                                <input type="text" id="company" name="company" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="phone" class="block mb-2">Nomor Telepon/WhatsApp</label>
+                                <input type="text" id="phone" name="phone" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="position" class="block mb-2">Posisi yang Ditawarkan</label>
+                                <input type="text" id="position" name="position" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block mb-2">Pesan <span class="text-red-400">*</span></label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-medium">
+                                <span id="submit-text">Kirim Pesan PKL</span>
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <!-- Informasi Kontak -->
+                    <div class="glass p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-6 text-indigo-400">Informasi Kontak</h3>
+                        
+                        <div class="space-y-2">
+                            <!-- Telepon -->
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-phone text-indigo-400"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <div class="contact-label">Telepon / WhatsApp</div>
+                                    <div class="contact-value">+62 812 3456 7890</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope text-indigo-400"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <div class="contact-label">Email</div>
+                                    <div class="contact-value">rasyid@example.com</div>
+                                </div>
+                            </div>
+                            
+                            <!-- GitHub -->
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fab fa-github text-indigo-400"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <div class="contact-label">GitHub</div>
+                                    <div class="contact-value">github.com/rasyid-anwar</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Lokasi -->
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="fas fa-map-marker-alt text-indigo-400"></i>
+                                </div>
+                                <div class="contact-info">
+                                    <div class="contact-label">Lokasi</div>
+                                    <div class="contact-value">Jakarta, Indonesia</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-slate-700">
+                            <h4 class="text-lg font-semibold mb-4 text-indigo-300">Media Sosial</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-500 transition">
+                                    <i class="fab fa-linkedin-in text-gray-300"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-500 transition">
+                                    <i class="fab fa-instagram text-gray-300"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-indigo-500 transition">
+                                    <i class="fab fa-twitter text-gray-300"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-10 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold gradient-text">Rasyid<span class="text-purple-400">Dev</span></h3>
+                    <p class="text-gray-400 mt-2">Siswa Rekayasa Perangkat Lunak - Siap PKL!</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Notification System
+        function showNotification(message, isSuccess = true) {
+            const notification = document.getElementById('notification');
+            const notificationIcon = document.getElementById('notification-icon');
+            const notificationMessage = document.getElementById('notification-message');
+            
+            notificationMessage.textContent = message;
+            
+            if (isSuccess) {
+                notification.className = 'notification success show';
+                notificationIcon.className = 'fas fa-check-circle mr-2';
+            } else {
+                notification.className = 'notification error show';
+                notificationIcon.className = 'fas fa-exclamation-circle mr-2';
+            }
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+
+        // Form Submission with Formspree
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const submitButton = form.querySelector('button[type="submit"]');
+            const submitText = document.getElementById('submit-text');
+            const loading = document.getElementById('loading');
+            
+            // Show loading state
+            submitText.textContent = 'Mengirim...';
+            submitButton.disabled = true;
+            loading.style.display = 'block';
+            
+            try {
+                // Kirim data ke Formspree
+                const response = await fetch('https://formspree.io/f/xyznajle', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                // Formspree mengembalikan response JSON
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showNotification('Pesan PKL berhasil dikirim! Saya akan menghubungi Anda segera.', true);
+                    form.reset();
+                } else {
+                    showNotification('Maaf, terjadi kesalahan: ' + (result.error || 'Silakan coba lagi.'), false);
+                }
+            } catch (error) {
+                showNotification('Maaf, terjadi kesalahan jaringan. Silakan coba lagi.', false);
+                console.error('Error:', error);
+            } finally {
+                // Reset button state
+                submitText.textContent = 'Kirim Pesan PKL';
+                submitButton.disabled = false;
+                loading.style.display = 'none';
+            }
+        });
+
+        // Animation for elements on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.tech-card, .section-title, .project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
